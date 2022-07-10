@@ -2,7 +2,7 @@
 
 Run desktop app in a virtual display in a docker container, and access it via VNC.
 
-[MIT License](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Edit [`Dockerfile`](Dockerfile) to adjust.
 
