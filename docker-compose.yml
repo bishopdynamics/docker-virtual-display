@@ -1,0 +1,29 @@
+
+# Example compose file
+
+version: '3.2'
+
+services:
+  docker_virtual_display:
+    image: bishopdynamics/docker_virtual_display:latest
+    container_name: docker_virtual_display
+    build: .
+    ports:
+      - "5901:5900" # vnc server
+    environment:
+      - WINDOW_WIDTH=1920  # Window Width
+      - WINDOW_HEIGHT=1080  # Window Height
+      - VNC_PASSWORD=badpass  # vnc password
+      - VNC_PORT=5900  # vnc port
+      - EXTRA_VNC_ARGS=  # additional arguments for x11vnc
+      - EXTRA_X_ARGS=  # additional arguments for X server
+      - PUID=1000  # User ID
+      - PGID=1000  # Group ID
+      - VIRTUAL_VRAM=192000  # need more vram for higher resolutions
+      - REFRESH_RATE=60  # hz, refresh rate, probably should stick with 60
+    shm_size: '1gb'
+    privileged: true
+    volumes:
+      # the run-as user home folder is mapped to /config
+      - /storage/Config/vnc-kiosk:/config
+
